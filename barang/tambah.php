@@ -33,13 +33,13 @@
                         <!-- User Account -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="avatar1.png" class="user-image" alt="User Image">
+                                <img src="../avatar1.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">Admin</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="avatar1.png" class="img-circle" alt="User Image">
+                                    <img src="../avatar1.png" class="img-circle" alt="User Image">
                                     <p>Admin<small>Malang, Indonesia</small></p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -82,19 +82,19 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tambah Data Barang</h3>
                             </div>
-                            <form role="form">
+                            <form role="form" action="proses_tambah_barang.php" method="POST">
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label>Nama Barang</label>
-                                        <input type="text" class="form-control" name="#" placeholder="Nama Barang">
+                                        <input type="text" class="form-control" name="nama" placeholder="Nama Barang">
                                     </div>
                                     <div class="form-group">
                                         <label>Stok</label>
-                                        <input type="number" class="form-control" name="#" placeholder="Stok Barang">
+                                        <input type="number" class="form-control" name="stok" placeholder="Stok Barang">
                                     </div>
                                     <div class="form-group">
                                         <label>Harga</label>
-                                        <input type="number" class="form-control" name="#" placeholder="Harga Barang">
+                                        <input type="number" class="form-control" name="harga" placeholder="Harga Barang">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -120,7 +120,7 @@
 
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-default"><a
-                                            href="dataBarang.php">Cancel</a></button>
+                                            href="data.php">Cancel</a></button>
                                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </form>

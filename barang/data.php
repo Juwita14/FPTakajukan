@@ -1,3 +1,7 @@
+<?php
+include('../koneksi.php');
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,13 +35,13 @@
                             <!-- User Account -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="avatar1.png" class="user-image" alt="User Image">
+                                    <img src="../avatar1.png" class="user-image" alt="User Image">
                                     <span class="hidden-xs">Admin</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="avatar1.png" class="img-circle" alt="User Image">
+                                        <img src="../avatar1.png" class="img-circle" alt="User Image">
                                         <p>Admin<small>Malang, Indonesia</small></p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -74,7 +78,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <ol class="breadcrumb">
-                        <li><a href="/barang/tambah.php"><i class="fa fa-plus"></i> Tambah Data Barang</a></li>
+                        <li><a href="tambah.php"><i class="fa fa-plus"></i> Tambah Data Barang</a></li>
                     </ol>
 
                     <div class="row">
@@ -96,13 +100,20 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Malkist</td>
-                                                <td>5</td>
-                                                <td>3000</td>
-                                                <td>
-                                                    <a class='btn btn-primary' href="edit.php"><i class="fa fa-pencil-square-o"></i></a>
-                                                    <a class='btn btn-danger' href="delete.php" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                                <?php
+                                                $sql = "SELECT * FROM barang";
+                                                $query = mysqli_query($db_connection, $sql);
+                                                while ($barang = mysqli_fetch_array($query)) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . $barang['id_barang'] . "</td>";
+                                                    echo "<td>" . $barang['nama_barang'] . "</td>";
+                                                    echo "<td>" . $barang['stok_barang'] . "</td>";
+                                                    echo "<td>" . $barang['harga_barang'] . "</td>";
+                                                    echo "<td>" . '<a class="btn btn-primary" href="edit.php?id='.$barang['id_barang'].'"><i class="fa fa-pencil-square-o"></i></a>'
+                                                    . '<a class="btn btn-danger" href="delete.php?id='.$barang['id_barang'].'" onclick="return confirm("Apakah anda yakin?")"><i class="fa fa-trash"></i></a>' . "</td>";
+                                                    echo "</tr>";
+                                                }
+                                                ?>
                                                 </td>
                                             </tr>
                                         </tbody>

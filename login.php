@@ -1,17 +1,22 @@
-<?php session_start();
-include "koneksi.php";
-$username = $_POST['username'];
-$password = $_POST['password'];
-$query = mysqli_query($koneksi, "select * from admin where username='$username' and password='$password'");
-$cek = mysqli_num_rows($query);
+<?php
+    session_start();
+    include('koneksi.php');
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $sql = "select * from user where username = '$username'";
+    $query = mysqli_query($db_connection, $sql);
+    $result = mysqli_fetch_assoc($query);
+    if (mysqli_num_rows($query) == 0) {
+        echo "<p>salah username <a href='login.html'>back</a></p>";
+    }
+    else {
+        if ($password != $result['password']) {
+            echo "<p>salah password <a href='login.html'>back</a></p>";
+        }
+        else {
+            $_SESSION['username'] = $result['username'];
+            header('location: beranda.php');
+        }
+    }
 
-if ($cek) {
-    $_SESSION['username']=$username;
-    ?><script language="javascript">document.location.href="beranda.html";</script><?php
-    
-}
-else {
-    ?><script language="javascript"> window.location="login.html";</script><?php
-    
-}
 ?>

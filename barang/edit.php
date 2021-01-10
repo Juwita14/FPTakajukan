@@ -1,3 +1,18 @@
+<?php
+include('../koneksi.php');
+$id = $_GET['id'];
+    // echo $id;
+    $sql = 'select * from barang where id_barang = '.$id;
+    $query = mysqli_query($db_connection, $sql);
+    $barang = mysqli_fetch_assoc($query);
+
+    // echo mysqli_num_rows($query);
+    if (!mysqli_num_rows($query)) {
+        // echo "<p> data eror</p>";
+        header('Location: data.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,13 +45,13 @@
                             <!-- User Account -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="avatar1.png" class="user-image" alt="User Image">
+                                    <img src="../avatar1.png" class="user-image" alt="User Image">
                                     <span class="hidden-xs">Admin</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="avatar1.png" class="img-circle" alt="User Image">
+                                        <img src="../avatar1.png" class="img-circle" alt="User Image">
                                         <p>Admin<small>Malang, Indonesia</small></p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -79,24 +94,24 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Edit Data Barang</h3>
                                 </div>
-                                <form role="form">
+                                <form role="form" action="proses_update_barang.php?id=<?=$barang['id_barang']?>" method="POST">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label>Nama Barang</label>
-                                            <input type="text" class="form-control" name="#" placeholder="Nama Barang">
+                                            <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang" value="<?php echo $barang['nama_barang']?>"required>
                                         </div>
                                         <div class="form-group">
                                             <label>Stok</label>
-                                            <input type="number" class="form-control" name="#" placeholder="Stok Barang">
+                                            <input type="number" class="form-control" name="stok_barang" placeholder="Stok Barang"value="<?php echo $barang['stok_barang']?>"required>
                                         </div>
                                         <div class="form-group">
                                             <label>Harga</label>
-                                            <input type="number" class="form-control" name="#" placeholder="Harga Barang">
+                                            <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang"value="<?php echo $barang['harga_barang']?>"required>
                                         </div>
                                     </div>
 
                                     <div class="box-footer">
-                                        <button type="submit" class="btn btn-default"><a href="dataBarang.php">Cancel</a></button>
+                                        <button type="submit" class="btn btn-default"><a href="data.php">Cancel</a></button>
                                         <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                     </div>
                                 </form>

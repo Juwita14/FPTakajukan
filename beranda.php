@@ -45,7 +45,7 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -77,7 +77,7 @@
                                 <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="dataBarang.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
+                                <li><a href="barang/data.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Jenis Barang</a></li>
                             </ul>
                         </li>
@@ -181,17 +181,17 @@
             <!-- ./wrapper -->
 
             <!-- jQuery 3 -->
-            <script src=" bower_components/jquery/dist/jquery.min.js"></script>
+            <script src=" assets/bower_components/jquery/dist/jquery.min.js"></script>
             <!-- Bootstrap 3.3.7 -->
-            <script src=" bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src=" assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
             <!-- SlimScroll -->
-            <script src=" bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+            <script src=" assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
             <!-- FastClick -->
-            <script src=" bower_components/fastclick/lib/fastclick.js"></script>
+            <script src=" assets/bower_components/fastclick/lib/fastclick.js"></script>
             <!-- AdminLTE App -->
-            <script src=" dist/js/adminlte.min.js"></script>
+            <script src=" assets/dist/js/adminlte.min.js"></script>
             <!-- AdminLTE for demo purposes -->
-            <script src=" dist/js/demo.js"></script>
+            <script src=" assets/dist/js/demo.js"></script>
             <script>
             $(document).ready(function () {
                 $('.sidebar-menu').tree()
