@@ -19,7 +19,7 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href=" index2.html" class="logo">
+            <a href="../beranda.php" class="logo">
                 <span class="logo-mini"><b>T</b></span>
                 <span class="logo-lg"><b>Takajukan</b></span>
             </a>
@@ -100,7 +100,7 @@
                                         <div class="col-md-12">
                                             <label>Gambar</label>
                                         </div>
-                                        <div class="col-md-6" id="gambar-container">
+                                        <div class="col-md-12" id="gambar-container">
                                             <div id="gambar-1" class="row gambar">
                                                 <div class="gambar-form col-lg-9">
                                                     <div class="form-group">
