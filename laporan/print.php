@@ -9,7 +9,7 @@
     $site = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/laporan/';
     // $site = 'google.com?';
 
-    $payload = escapeshellcmd("python3 print.py 'http://".$site."template.php?id=".$_GET['id']."' '".$file.".pdf'");
+    $payload = escapeshellcmd("python3 csv.py '".$site."template.php?id=".$_GET['id']."' '".$file.".csv'");
     shell_exec($payload);
-    header("Location: ".$file.".pdf");
+    header("Location: ".$file.".csv");
 ?>

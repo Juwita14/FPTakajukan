@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="/beranda.php" class="logo">
         <span class="logo-mini"><b>T</b></span>
         <span class="logo-lg"><b>Takajukan</b></span>
     </a>

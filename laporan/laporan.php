@@ -7,6 +7,13 @@
 
     $trx = mysqli_fetch_all(mysqli_query($db_connection, "SELECT * FROM transaksi WHERE id_barang = ".$_GET['id']), MYSQLI_ASSOC);
     $brg = mysqli_fetch_all(mysqli_query($db_connection, "SELECT * FROM barang WHERE id_barang = ".$_GET['id']), MYSQLI_ASSOC);
+    $arr = [];
+    $stok = $brg[0]['stok_barang'];
+    foreach ($trx as $t) {
+        $stok = $stok - $t['jumlah_transaksi'];
+        array_push($arr, [$stok, $t['waktu_transaksi']]);
+    }
+    $arr = array_reverse($arr);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +30,8 @@
         <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -69,9 +78,6 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Laporan</h3>
                                     <div class="pull-right">
-                                        <!-- <a href="/laporan/print.php?id=<?= $brg[0]['id_barang'] ?>" class="btn btn-sm btn-primary">
-                                            <i class="fa fa-download"></i> Unduh Laporan
-                                        </a> -->
                                     </div>
                                 </div>
                                 <div class="box-body">
@@ -103,6 +109,16 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Grafik</h3>
+                                </div>
+                                <div class="box-body" style="min-height: 500px">
+                                    <div id="chart"></div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </section>
             </div>
@@ -124,10 +140,27 @@
             <script src="../assets/dist/js/adminlte.min.js"></script>
             <!-- AdminLTE for demo purposes -->
             <script src="../assets/dist/js/demo.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous"></script>
             <script>
             $(document).ready(function () {
                 $('.sidebar-menu').tree()
-            })
+            });
+            window.onload = function (){
+                var chart = new CanvasJS.Chart("chart", {
+                    data: [{
+                        type: "line",
+                        dataPoints: [
+                            <?php foreach ($arr as $idx=>$a) {
+                                echo "{y: $a[0]},";
+                            } ?>
+                        ],
+                        showInLegend: true, 
+                        legendText: "Barang"
+                    }]
+                });
+                
+                chart.render();
+            }
             </script>
     </body>
 </html>
