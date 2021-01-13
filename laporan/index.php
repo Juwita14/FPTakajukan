@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Data Transaksi</title>
+        <title>Data Laporan</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
@@ -30,10 +30,10 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1><i class="fa fa-folder"></i> Data Transaksi</h1>
+                    <h1><i class="fa fa-folder"></i> Data Laporan</h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="active">Data Transaksi</li>
+                        <li class="active">Data Laporan</li>
                     </ol>
                 </section>
 
@@ -44,12 +44,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Transaksi</h3>
-                                    <div class="pull-right">
-                                        <a href="/transaksi/tambah.php" class="btn btn-sm btn-primary">
-                                            <i class="fa fa-plus"></i> Tambah Transaksi
-                                        </a>
-                                    </div>
+                                    <h3 class="box-title">Laporan</h3>
                                 </div>
                                 <div class="box-body">
                                     <table id="example2" class="table table-bordered table-striped table-hover">

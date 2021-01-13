@@ -42,7 +42,7 @@
                 <section class="content-header">
                     <h1><i class="fa fa-home"></i> Home</h1>
                     <ol class="breadcrumb">
-                        <li><a href="index.php"><i class="fa fa-home"></i>Dashboard</a></li>
+                        <li><a href="/beranda.php"><i class="fa fa-home"></i>Dashboard</a></li>
                     </ol>
                 </section>
 
@@ -50,7 +50,7 @@
                 <section class="content">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-lg-4 col-xs-12">
                             <!-- small box -->
                             <div class="small-box bg-aqua">
                             <div class="inner">
@@ -60,11 +60,11 @@
                             <div class="icon">
                                 <i class="ion-android-folder"></i>
                             </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-plus"></i></a>
+                                <a href="/barang/data.php" class="small-box-footer"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-lg-4 col-xs-12">
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3><?= $datas[1] ?></h3>
@@ -74,10 +74,10 @@
                                     <i class="ion-arrow-left-a"></i>
                                 </div>
 
-                                <a href="#" class="small-box-footer"><i class="fa fa-plus"></i></a>
+                                <a href="/transaksi/index.php" class="small-box-footer"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-lg-4 col-xs-12">
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3><?= $datas[2] ?></h3>
@@ -86,19 +86,7 @@
                                 <div class="icon">
                                     <i class="ion-arrow-right-a"></i>
                                 </div>
-                                    <a href="#" class="small-box-footer"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3><?= $datas[3] ?></h3>
-                                    <p>User</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion-android-person"></i>
-                                </div>
-                                    <a href="#" class="small-box-footer"><i class="fa fa-plus"></i></a>
+                                    <a href="/transaksi/index.php" class="small-box-footer"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>

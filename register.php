@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require('koneksi.php');
     $username = $_POST['username'];
     $password = $_POST['password'];

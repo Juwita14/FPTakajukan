@@ -8,7 +8,8 @@
     $harga = $_POST['harga_barang'];
 
     $sql = "update barang set nama_barang = '$nama', stok_barang = '$stok', harga_barang = '$harga' where id_barang = $id";
-    if(isset($_FILES['gambar'])){
+    $r = mysqli_query($db_connection, $sql);
+    if(isset($_FILES['gambar']) && ($_FILES['gambar']['name'][0] != '')){
         $files = [];
         foreach ($_FILES['gambar'] as $key => $file) {
             foreach ($file as $k => $v) {

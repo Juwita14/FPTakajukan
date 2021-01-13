@@ -15,7 +15,7 @@
         }
         else {
             $_SESSION['username'] = $result['username'];
-            header('location: beranda.php');
+            header('Location: beranda.php');
         }
     }
 

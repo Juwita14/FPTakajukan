@@ -89,7 +89,7 @@
                                                     </div>
                                                 </td>
                                                 <td><?= $barang['stok_barang'] ?></td>
-                                                <td><?= $barang['harga_barang'] ?></td>
+                                                <td><?= rupiah($barang['harga_barang']) ?></td>
                                                 <td>
                                                     <div style="padding: 2.5px 0px">
                                                         <a class="btn btn-sm btn-primary" href="edit.php?id=<?= $barang['id_barang'] ?>">

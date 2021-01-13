@@ -69,9 +69,9 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Laporan</h3>
                                     <div class="pull-right">
-                                        <a href="/laporan/print.php?id=<?= $brg[0]['id_barang'] ?>" class="btn btn-sm btn-primary">
+                                        <!-- <a href="/laporan/print.php?id=<?= $brg[0]['id_barang'] ?>" class="btn btn-sm btn-primary">
                                             <i class="fa fa-download"></i> Unduh Laporan
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                                 <div class="box-body">

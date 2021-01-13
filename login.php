@@ -7,7 +7,11 @@
     </head>
     <body>
         <?php if(isset($_GET['err'])): ?>
-            <div class="alert alert-danger">Anda belum login.</div>
+            <?php if($_GET['err'] == 1): ?>
+                <div class="alert alert-danger">Anda belum login.</div>
+            <?php else: ?>
+                <div class="alert alert-danger">Username / Password Anda salah.</div>
+            <?php endif; ?>
         <?php endif; ?>
         <div class="container" id="container">
             <div class="form-container sign-up-container">

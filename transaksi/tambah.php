@@ -49,7 +49,7 @@
                             <form role="form" action="proses.php" enctype="multipart/form-data" method="POST">
                                 <div class="box-body">
                                 <div class="form-group">
-                                        <label>Jenis Transaksi</label>
+                                        <label>Barang Transaksi</label>
                                         <select name="id_barang" class="form-control">
                                             <?php
                                                 $q = mysqli_query($db_connection, "SELECT * FROM barang");

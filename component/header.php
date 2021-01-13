@@ -14,7 +14,7 @@
                 <!-- User Account -->
                 <li class="dropdown user user-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs"><?= $_SESSION['username'] ?></span>
+                        <span class="hidden-xs">Selamat datang, <b><?= $_SESSION['username'] ?></b></span>
                     </a>
                 </li>
             </ul>

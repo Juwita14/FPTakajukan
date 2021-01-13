@@ -13,6 +13,6 @@ def makepdf(html):
 infile = sys.argv[1]
 outfile = sys.argv[2]
 html = requests.get(infile).text
+# pdf = makepdf(html)
+# Path(outfile).write_bytes(pdf)
 print(html)
-pdf = makepdf(html)
-Path(outfile).write_bytes(pdf)

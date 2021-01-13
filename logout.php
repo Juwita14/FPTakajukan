@@ -3,5 +3,5 @@
 
     session_destroy();
 
-    header('location: index.html');
+    header('Location: index.html');
 ?>
