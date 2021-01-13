@@ -1,3 +1,21 @@
+<?php require "checker.php"; ?>
+
+<?php 
+    require "koneksi.php";
+    $queries = [
+        "SELECT COUNT(*) FROM barang",
+        "SELECT COUNT(*) FROM transaksi WHERE jumlah_transaksi > 0",
+        "SELECT COUNT(*) FROM transaksi WHERE jumlah_transaksi < 0",
+        "SELECT COUNT(*) FROM user",
+    ];
+
+    $datas = [];
+    foreach($queries as $q){
+        $r = mysqli_query($db_connection, $q);
+        $datas[] = mysqli_fetch_array($r, MYSQLI_NUM)[0];
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,98 +32,10 @@
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="index.html" class="logo">
-                    <span class="logo-mini"><b>T</b></span>
-                    <span class="logo-lg"><b>Takajukan</b></span>
-                </a>
-                <nav class="navbar navbar-static-top">
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- User Account -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="avatar1.png" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Admin</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="avatar1.png" class="img-circle" alt="User Image">
-                                        <p>Admin<small>Malang, Indonesia</small></p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
+            <?php require "component/header.php" ?>
 
             <!-- Left side column -->
-            <aside class="main-sidebar">
-                <section class="sidebar">
-                    <div class="user-panel">
-                        <div class="pull-left image"><img src="avatar1.png" class="img-circle" alt="User Image"></div>
-                        <div class="pull-left info">
-                            <p>Admin</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">MAIN MENU</li>
-                        <li>
-                            <a href="beranda.php"><i class="fa fa-home"></i> <span>Dashboard</span></a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Data Master</span>
-                                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="barang/data.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Jenis Barang</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-clone"></i> <span>Transaksi</span>
-                                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Barang Keluar</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file"></i> <span>Laporan</span>
-                                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Barang Keluar</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
-
+            <?php require "component/sidebar.php"; ?>
             <!-- Content Wrapper -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -124,7 +54,7 @@
                             <!-- small box -->
                             <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>7</h3>
+                                <h3><?= $datas[0] ?></h3>
                                 <p>Data Barang</p>
                             </div>
                             <div class="icon">
@@ -137,7 +67,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3>5</h3>
+                                    <h3><?= $datas[1] ?></h3>
                                     <p>Data Masuk</p>
                                 </div>
                                 <div class="icon">
@@ -150,7 +80,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>3</h3>
+                                    <h3><?= $datas[2] ?></h3>
                                     <p>Barang Keluar</p>
                                 </div>
                                 <div class="icon">
@@ -162,7 +92,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>2</h3>
+                                    <h3><?= $datas[3] ?></h3>
                                     <p>User</p>
                                 </div>
                                 <div class="icon">

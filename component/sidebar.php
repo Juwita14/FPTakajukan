@@ -1,9 +1,8 @@
 <aside class="main-sidebar">
     <section class="sidebar">
-        <div class="user-panel">
-            <div class="pull-left image"><img src="../avatar1.png" class="img-circle" alt="User Image"></div>
+        <div class="user-panel pb-5">
             <div class="pull-left info">
-                <p>Admin</p>
+                <p><?= $_SESSION['username'] ?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -11,17 +10,10 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN MENU</li>
             <li>
-                <a href="../beranda.php"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                <a href="/beranda.php"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i> <span>Data Master</span>
-                    <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="active"><a href="../barang/data.php"><i class="fa fa-circle-o"></i> Data Barang</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Jenis Barang</a></li>
-                </ul>
+            <li>
+                <a href="/barang/data.php"><i class="fa fa-folder"></i> Data Barang</a>
             </li>
             <li class="treeview">
                 <a href="#">

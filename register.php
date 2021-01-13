@@ -1,14 +1,13 @@
 <?php
-    include('koneksi.php');
-    var_dump($_POST);
+    require('koneksi.php');
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "insert into user (username, password) values('$username', '$password')";
+    $sql = "insert into user (username, password) values ('$username', '$password')";
     $query = mysqli_query($db_connection, $sql);
 
     if ($query) {
-        echo "<p>penambahan user: $username berhasil</p>";
-        header('location: index.html');
+        $_SESSION['username'] = $username;
+        header('Location: beranda.php');
     }
 ?>

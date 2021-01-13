@@ -1,5 +1,6 @@
 <?php
-include('../koneksi.php');
+    require "../checker.php";
+    require "../koneksi.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,46 +20,8 @@ include('../koneksi.php');
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="../beranda.php" class="logo">
-                    <span class="logo-mini"><b>T</b></span>
-                    <span class="logo-lg"><b>Takajukan</b></span>
-                </a>
-                <nav class="navbar navbar-static-top">
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- User Account -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../avatar1.png" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Admin</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="../avatar1.png" class="img-circle" alt="User Image">
-                                        <p>Admin<small>Malang, Indonesia</small></p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
+            
+            <?php require "../component/header.php"; ?>
 
             <!-- Left side column -->
             <?php require "../component/sidebar.php"; ?>
@@ -70,52 +33,77 @@ include('../koneksi.php');
                     <h1><i class="fa fa-folder"></i> Data Barang</h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#">Data Master</a></li>
                         <li class="active">Data Barang</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <ol class="breadcrumb">
-                        <li><a href="tambah.php"><i class="fa fa-plus"></i> Tambah Data Barang</a></li>
-                    </ol>
-
+                    
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Barang</h3>
+                                    <div class="pull-right">
+                                        <a href="tambah.php" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-plus"></i> Tambah Barang
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="box-body">
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="example2" class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Barang</th>
+                                                <th width="240">Barang</th>
+                                                <th>Gambar</th>
                                                 <th>Stok</th>
                                                 <th>Harga</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <?php
+                                            <?php
                                                 $sql = "SELECT * FROM barang";
                                                 $query = mysqli_query($db_connection, $sql);
-                                                while ($barang = mysqli_fetch_array($query)) {
-                                                    echo "<tr>";
-                                                    echo "<td>" . $barang['id_barang'] . "</td>";
-                                                    echo "<td>" . $barang['nama_barang'] . "</td>";
-                                                    echo "<td>" . $barang['stok_barang'] . "</td>";
-                                                    echo "<td>" . $barang['harga_barang'] . "</td>";
-                                                    echo "<td>" . '<a class="btn btn-primary" href="edit.php?id='.$barang['id_barang'].'"><i class="fa fa-pencil-square-o"></i></a>'
-                                                    . '<a class="btn btn-danger" href="delete.php?id='.$barang['id_barang'].'" onclick="return confirm("Apakah anda yakin?")"><i class="fa fa-trash"></i></a>' . "</td>";
-                                                    echo "</tr>";
-                                                }
-                                                ?>
+                                                while ($barang = mysqli_fetch_array($query)):
+                                            ?>
+                                            <tr>
+                                                <td><?= $barang['id_barang'] ?></td>
+                                                <td><?= $barang['nama_barang'] ?></td>
+                                                <td>
+                                                    <div class="row">
+                                                        <?php
+                                                            $q = mysqli_query($db_connection, "SELECT link_gambar FROM gambar WHERE id_barang = ".$barang['id_barang']);
+                                                            $pic = mysqli_fetch_all($q);
+
+                                                            foreach ($pic as $r):
+                                                        ?>
+                                                        
+                                                        <div class="col-md-4">
+                                                            <img src="../file/<?= $r[0] ?>" class="img-thumbnail w-300">
+                                                        </div>
+                                                        
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </td>
+                                                <td><?= $barang['stok_barang'] ?></td>
+                                                <td><?= $barang['harga_barang'] ?></td>
+                                                <td>
+                                                    <div style="padding: 2.5px 0px">
+                                                        <a class="btn btn-sm btn-primary" href="edit.php?id=<?= $barang['id_barang'] ?>">
+                                                            <i class="fa fa-pencil-square-o"></i> Edit
+                                                        </a>
+                                                    </div>
+                                                    <div style="padding: 2.5px 0px">
+                                                        <a class="btn btn-sm btn-danger" href="delete.php?id=<?= $barang['id_barang'] ?>" onclick="return confirm('Apakah anda yakin?')">
+                                                            <i class="fa fa-trash"></i> Hapus
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </tr>
+                                            <?php endwhile; ?>
                                         </tbody>
                                     </table>
                                 </div>

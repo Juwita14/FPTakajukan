@@ -2,8 +2,8 @@
 
 $server = "localhost";
 $user = "root";
-$password = "";
-$database = "fp_pweb";
+$password = "firejacket";
+$database = "pweb_fp";
 
 $db_connection = mysqli_connect($server, $user, $password, $database);
 

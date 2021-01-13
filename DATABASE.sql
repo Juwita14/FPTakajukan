@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `barang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `barang` (
-  `id_barang` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL AUTO_INCREMENT,
   `nama_barang` varchar(255) NOT NULL,
   `stok_barang` int(11) NOT NULL DEFAULT '0',
   `harga_barang` int(11) NOT NULL,
@@ -97,7 +97,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)

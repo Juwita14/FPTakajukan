@@ -19,7 +19,7 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="../beranda.php" class="logo">
+            <a href="/beranda.php" class="logo">
                 <span class="logo-mini"><b>T</b></span>
                 <span class="logo-lg"><b>Takajukan</b></span>
             </a>
@@ -68,7 +68,6 @@
                 <h1><i class="fa fa-folder"></i> Data Barang</h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="#">Data Master</a></li>
                     <li><a href="#">Data Barang</a></li>
                     <li class="active">Tambah Data Barang</li>
                 </ol>
@@ -82,7 +81,7 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tambah Data Barang</h3>
                             </div>
-                            <form role="form" action="proses_tambah_barang.php" method="POST">
+                            <form role="form" action="proses_tambah_barang.php" enctype="multipart/form-data" method="POST">
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label>Nama Barang</label>

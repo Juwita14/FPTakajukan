@@ -80,7 +80,6 @@ $id = $_GET['id'];
                     <h1><i class="fa fa-folder"></i> Data Barang</h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#">Data Master</a></li>
                         <li><a href="#">Data Barang</a></li>
                         <li class="active">Edit Data Barang</li>
                     </ol>
@@ -94,7 +93,7 @@ $id = $_GET['id'];
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Edit Data Barang</h3>
                                 </div>
-                                <form role="form" action="proses_update_barang.php?id=<?=$barang['id_barang']?>" method="POST">
+                                <form role="form" action="proses_update_barang.php?id=<?=$barang['id_barang']?>" method="POST" enctype="multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label>Nama Barang</label>
@@ -108,8 +107,45 @@ $id = $_GET['id'];
                                             <label>Harga</label>
                                             <input type="number" class="form-control" name="harga_barang" placeholder="Harga Barang"value="<?php echo $barang['harga_barang']?>"required>
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Gambar</label>
+                                            </div>
+                                            <div class="col-md-6" id="gambar-container">
+                                                <div id="gambar-1" class="row gambar">
+                                                    <div class="gambar-form col-lg-9">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="gambar[]" type="file" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="gambar-btns col-lg-3">
+                                                        <button type="button" onclick="addGambar(1)"
+                                                            class="btn btn-primary add-1">
+                                                            <b>+</b>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 row">
+                                                <?php
+                                                    $q = mysqli_query($db_connection, "SELECT link_gambar, id_gambar FROM gambar WHERE id_barang = ".$barang['id_barang']);
+                                                    $pic = mysqli_fetch_all($q);
 
+                                                    foreach ($pic as $r):
+                                                ?>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="panel panel-default" style="padding: 12px">
+                                                        <img src="../file/<?= $r[0] ?>" class="img-thumbnail w-300">
+                                                        <a href="delete_photo.php?id=<?= $r[1] ?>" style="margin-top: 8px" class="btn btn-sm btn-danger">Hapus Foto</a>
+                                                    </div>
+                                                </div>
+                                                
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-default"><a href="data.php">Cancel</a></button>
                                         <button type="submit" class="btn btn-primary pull-right">Submit</button>
@@ -142,6 +178,21 @@ $id = $_GET['id'];
             $(document).ready(function () {
                 $('.sidebar-menu').tree()
             })
+
+            function addGambar(idx){
+                idx++;
+                idx = $('.gambar').length + 1;
+                $("#gambar-container").append('<div id="gambar-'+idx+'" class="row gambar"><div class="gambar-form col-lg-9"><div class="form-group"><input class="form-control" name="gambar[]" type="file"/></div></div><div class="gambar-btns col-lg-3"><button type="button" onclick="removeGambar(' + idx + ')" class="btn btn-danger remove-'+idx+'"><b>-</b></button> <button type="button" onclick="addGambar('+idx+')" class="btn btn-primary add-'+idx+'"><b>+</b></button></div></div>');
+            }
+
+            function removeGambar(idx){
+                if($('.gambar').length > 1){
+                    if($('.gambar').length == 2){
+                        $(".remove-1").remove();
+                    }
+                    $("#gambar-" + idx--).remove();
+                }
+            }
             </script>
     </body>
 </html>
