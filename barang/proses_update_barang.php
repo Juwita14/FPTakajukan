@@ -1,5 +1,5 @@
 <?php 
-    include('../koneksi.php');
+    require('../koneksi.php');
     require("../checker.php");
 
     $id = $_GET['id'];

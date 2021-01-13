@@ -1,5 +1,7 @@
 <?php
-    include('../koneksi.php');
+    require "../checker.php";
+    require "../koneksi.php";
+    
     $nama = $_POST['nama'];
     $stok = $_POST['stok'];
     $harga = $_POST['harga'];

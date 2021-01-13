@@ -1,6 +1,7 @@
 <?php 
-    include('../koneksi.php');
-
+    require "../checker.php";
+    require "../koneksi.php";
+    
     if (! isset($_GET['id'])) {
         header('Location: data.php');
     }
