@@ -10,7 +10,10 @@
                 <a href="/barang/data.php"><i class="fa fa-folder"></i> Data Barang</a>
             </li>
             <li>
-                <a href="/transaksi/index.php"><i class="fa fa-book"></i> Data Transaksi</a>
+                <a href="/transaksi/index.php"><i class="fa fa-book"></i> Transaksi</a>
+            </li>
+            <li>
+                <a href="/laporan/index.php"><i class="fa fa-file"></i> Laporan</a>
             </li>
             <li>
                 <a href="/logout.php"><i class="fa fa-power-off"></i> Logout</a>

@@ -57,23 +57,23 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th width="240">Barang</th>
-                                                <th>Jenis Transaksi</th>
-                                                <th>Banyak Transaksi</th>
-                                                <th>Waktu Transaksi</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $sql = "SELECT * FROM transaksi INNER JOIN barang ON barang.id_barang = transaksi.id_barang ORDER BY transaksi.waktu_transaksi";
+                                                $sql = "SELECT * FROM barang";
                                                 $query = mysqli_query($db_connection, $sql);
                                                 while ($trx = mysqli_fetch_array($query)):
                                             ?>
                                             <tr>
-                                                <td><?= $trx['id_transaksi'] ?></td>
+                                                <td><?= $trx['id_barang'] ?></td>
                                                 <td><?= $trx['nama_barang'] ?></td>
-                                                <td><?= ($trx['jumlah_transaksi'] > 0) ? "<div class='label label-success'>Barang Masuk</div>" : "<div class='label label-danger'>Barang Keluar</div>" ?></td>
-                                                <td><?= abs($trx['jumlah_transaksi']) ?></td>
-                                                <td><?= $trx['waktu_transaksi'] ?></td>
+                                                <td>
+                                                    <a href="/laporan/laporan.php?id=<?= $trx['id_barang'] ?>" class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-file"></i> Laporan
+                                                    </a>
+                                                </td>
                                             </tr>
                                             <?php endwhile; ?>
                                         </tbody>

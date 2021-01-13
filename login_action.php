@@ -7,11 +7,11 @@
     $query = mysqli_query($db_connection, $sql);
     $result = mysqli_fetch_assoc($query);
     if (mysqli_num_rows($query) == 0) {
-        echo "<p>salah username <a href='login.html'>back</a></p>";
+        header("Location: /login.php?err=2");
     }
     else {
         if ($password != $result['password']) {
-            echo "<p>salah password <a href='login.html'>back</a></p>";
+            header("Location: /login.php?err=2");
         }
         else {
             $_SESSION['username'] = $result['username'];

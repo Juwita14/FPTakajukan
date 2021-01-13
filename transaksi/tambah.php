@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Transaksi</label>
-                                        <input type="number" class="form-control" name="jumlah_transaksi" placeholder="Stok Transaksi">
+                                        <input type="number" class="form-control" name="jumlah_transaksi" placeholder="Jumlah Transaksi">
                                     </div>
                                     <div class="form-group">
                                         <label>Jenis Transaksi</label>
