@@ -10,9 +10,10 @@
     $arr = [];
     $stok = $brg[0]['stok_barang'];
     $trx_rev = array_reverse($trx);
+    array_push($arr, [$stok, 1]);
     foreach ($trx_rev as $t) {
-        array_push($arr, [$stok, $t['waktu_transaksi']]);
         $stok = $stok - $t['jumlah_transaksi'];
+        array_push($arr, [$stok, $t['waktu_transaksi']]);
     }
     $arr = array_reverse($arr);
 ?>
@@ -110,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Grafik</h3>
@@ -119,7 +120,7 @@
                                     <div id="chart"></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </section>
             </div>
