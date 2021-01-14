@@ -9,9 +9,10 @@
     $brg = mysqli_fetch_all(mysqli_query($db_connection, "SELECT * FROM barang WHERE id_barang = ".$_GET['id']), MYSQLI_ASSOC);
     $arr = [];
     $stok = $brg[0]['stok_barang'];
-    foreach ($trx as $t) {
-        $stok = $stok - $t['jumlah_transaksi'];
+    $trx_rev = array_reverse($trx);
+    foreach ($trx_rev as $t) {
         array_push($arr, [$stok, $t['waktu_transaksi']]);
+        $stok = $stok - $t['jumlah_transaksi'];
     }
     $arr = array_reverse($arr);
 ?>
@@ -63,12 +64,12 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="col-md-12 row">
-                                        <div class="col-md-3">Nama Barang</div>
-                                        <div class="col-md-9"><b><?= $brg[0]['nama_barang'] ?></b></div>
-                                        <div class="col-md-3">Harga Barang</div>
-                                        <div class="col-md-9"><b><?= rupiah($brg[0]['harga_barang']) ?></b></div>
-                                        <div class="col-md-3">Stok Barang</div>
-                                        <div class="col-md-9"><b><?= $brg[0]['stok_barang'] ?> buah</b></div>
+                                        <div class="col-md-4">Nama Barang</div>
+                                        <div class="col-md-8"><b><?= $brg[0]['nama_barang'] ?></b></div>
+                                        <div class="col-md-4">Harga Barang</div>
+                                        <div class="col-md-8"><b><?= rupiah($brg[0]['harga_barang']) ?></b></div>
+                                        <div class="col-md-4">Stok Barang</div>
+                                        <div class="col-md-8"><b><?= $brg[0]['stok_barang'] ?> buah</b></div>
                                     </div>
                                 </div>
                             </div>
